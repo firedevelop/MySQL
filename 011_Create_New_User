@@ -1,0 +1,19 @@
+-- Active: 1705272842777@@127.0.0.1@3306
+CREATE USER 'AA'@'localhost' IDENTIFIED BY 'AA';
+
+-- See user privileges
+SELECT * FROM mysql.user
+
+-- Alter Password
+ALTER USER 'AA'@'localhost' IDENTIFIED BY 'AA2';
+
+-- Alter Password Expired
+ALTER USER 'AA'@'localhost' IDENTIFIED WITH sha256_pas
+sword BY 'AA2' PASSWORD EXPIRED INTERVAL 200 DAY;
+
+-- DROP USER
+DROP USER 'AA'@'localhost';
+
+
+
+

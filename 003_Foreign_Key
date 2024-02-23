@@ -1,0 +1,25 @@
+DROP TABLE IF EXIST users;
+DROP TABLE IF EXIST orders;
+
+CREATE TABLE users(
+    id_users INT NOT NULL,
+    name VARCHAR(255),
+    PRIMARY KEY (id_users)
+);
+
+CREATE TABLE orders(
+	id_orders INT NOT NULL,
+    name VARCHAR(255),
+    PRIMARY KEY (id_orders),
+    CONSTRAINT fk_id_users_id_orders FOREIGN KEY (id_orders) REFERENCES users(id_users)
+);
+
+ALTER TABLE orders DROP FOREIGN KEY fk_id_users_id_orders;
+
+ALTER TABLE orders ADD FOREIGN KEY (id_orders) REFERENCES users(id_users);
+
+ALTER TABLE orders DROP FOREIGN KEY fk_id_users_id_orders;
+
+ALTER TABLE orders ADD CONSTRAINT fk_id_users_id_orders FOREIGN KEY(id_orders) REFERENCES users(id_users)
+
+

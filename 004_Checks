@@ -1,0 +1,29 @@
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS orders;
+
+/* USERS */
+CREATE TABLE users(
+id int AUTO_INCREMENT PRIMARY KEY,
+age int,
+CHECK (age >= 18)
+);
+
+insert into users (age) values (18);    /* OK */
+insert into users (age) values (16);    /* output: violation check */
+ALTER TABLE users DROP CHECK users_chk_1;   /* constraint name "users_chk_1" was created automatically by sql */
+insert into users (age) values (16);    /* OK */
+
+/* ORDERS*/
+CREATE TABLE orders(
+id int AUTO_INCREMENT PRIMARY KEY,
+country VARCHAR(255),
+age int,
+CONSTRAINT myCheck CHECK (country='us' AND age>=18)
+);
+
+insert into orders (country, age) VALUES ('us', 18);    /* OK */
+insert into orders (country, age) VALUES ('us', 16);    /* violation check */
+insert into orders (country, age) VALUES ('es', 18);    /* violation check */
+
+ALTER TABLE orders DROP CHECK myCheck; 
+insert into orders (country, age) VALUES ('es', 16);    /* OK */

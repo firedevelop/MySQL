@@ -1,0 +1,85 @@
+-- Active: 1706263855272@@127.0.0.1@3306@test
+SHOW TABLES FROM test;  -- Show tables
+USE TEST;   -- use db test
+SELECT * FROM mysql.user;   -- Show users
+SHOW GRANTS;   -- Show Grants
+SHOW GRANTS FOR 'JOHN'@'localhost';
+FLUSH PRIVILEGES;
+SELECT USER();  -- Who I am
+CREATE USER 'AA'@'localhost' IDENTIFIED BY 'AA';
+DROP USER 'JOHN'@'localhost';
+SELECT * FROM employees ORDER BY `employeeNumber` ASC LIMIT 5;
+SELECT `employeeNumber`, `firstName` FROM employees;    -- AA console
+GRANT SELECT, INSERT ON employees TO 'JOHN'@'localhost';
+REVOKE ALL PRIVILEGES ON test.employees FROM 'JOHN'@'localhost';
+REVOKE ALL PRIVILEGES ON test.orders FROM 'JOHN'@'localhost';
+REVOKE SELECT ON test.* FROM 'JOHN'@'localhost';
+REVOKE SELECT ON *.* FROM 'JOHN'@'localhost';
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'JOHN'@'localhost';
+REVOKE ALL PRIVILEGES ON *.* FROM 'JOHN'@'localhost';
+GRANT SELECT ON *.* TO 'JOHN'@'localhost';      -- Todas las tablas de todas las BBDD.
+GRANT SELECT ON test.* TO 'JOHN'@'localhost';   -- Todas las tablas de la BD test.
+GRANT SELECT ON test.employees TO 'JOHN'@'localhost';   -- Solamente a la tabla employees de la BBDD test.
+GRANT SELECT ON orders TO 'JOHN'@'localhost';
+SHOW GRANTS FOR 'JOHN'@'localhost';
+ALTER USER 'AA'@'localhost' WITH MAX_QUERIES_PER_HOUR 3000;
+ALTER USER 'AA'@'localhost' WITH MAX_QUERIES_PER_HOUR 3;
+SELECT * FROM employees LIMIT 100
+-- GRANT OPTION -- Concede a otros usuarios los permisos que tiene el primer usuario.
+GRANT SELECT ON employees TO john WITH GRANT OPTION;
+-- MAX_QUERIES_PER_HOUR -- Restringe el número de consultas por hora que puede realizar un usuario.
+GRANT USAGE ON *.* TO john WITH MAX_QUERIES_PER_HOUR 50;
+-- MAX_UPDATES_PER_HOUR -- Restringe el número de modificaciones por hora que puede realizar un usuario.
+GRANT UPDATE ON orders TO john WITH MAX_UPDATES_PER_HOUR 20;
+-- MAX_CONNECTIONS_PER_HOUR -- Restringe las conexiones por hora que realice un usuario.
+GRANT USAGE ON *.* TO john WITH MAX_CONNECTIONS_PER_HOUR 5;
+-- MAX_USER_CONNECTIONS -- Limita el número de conexiones simultáneas que puede tener un usuario.
+GRANT USAGE ON *.* TO john WITH MAX_USER_CONNECTIONS 3;
+-- ALL PRIVILEGES -- Da todos los permisos simples excepto GRANT OPTION.
+GRANT ALL PRIVILEGES ON employees TO john;
+-- ALTER -- Permite el uso de ALTER TABLE.
+GRANT ALTER ON employees TO john;
+-- ALTER ROUTINE -- Modifica o borra rutinas almacenadas.
+GRANT ALTER ROUTINE ON *.* TO john;
+-- CREATE ROLE -- crea ROL a nivel global.
+CREATE ROLE analyst;
+-- CREATE ROUTINE -- Crea rutinas almacenadas.
+GRANT CREATE ROUTINE ON employees TO john;
+-- CREATE USER -- Permitir CREATE USER, DROP USER, RENAME USER y REVOKE.
+GRANT CREATE USER TO john;
+-- CREATE VIEW -- Permite el uso de CREATE VIEW.
+GRANT CREATE VIEW ON employees TO john;
+-- DELETE -- Permite el uso de DELETE.
+GRANT DELETE ON orders TO john;
+-- DROP -- Permite el uso de DROP TABLE.
+GRANT DROP ON *.* TO john;
+-- EXECUTE -- Permite al usuario ejecutar rutinas almacenadas.
+GRANT EXECUTE ON employees TO john;
+-- FILE -- Permite el uso de SELECT, INTO OUTFILE y LOAD DATA INFILE.
+GRANT FILE ON *.* TO john;
+-- GRANT OPTION -- Posibilita dar permisos.
+GRANT SELECT ON employees TO john WITH GRANT OPTION;
+-- LOCK TABLES -- Permite el uso de LOCK TABLES en tablas para las que tenga el permiso SELECT.
+GRANT LOCK TABLES ON employees TO john;
+-- PROCESS -- Permite el uso de SHOW FULL PROCESSLIST.
+GRANT PROCESS ON *.* TO john;
+-- RELOAD -- Permite el uso de FLUSH.
+GRANT RELOAD ON *.* TO john;
+-- REFERENCES -- Permite al usuario la creación de claves ajenas.
+GRANT REFERENCES (column_name) ON employees TO john;
+-- SHOW DATABASES -- Muestra todas las BBDD.
+GRANT SHOW DATABASES TO john;
+-- SHOW VIEW -- Permite el uso de SHOW CREATE VIEW.
+GRANT SHOW VIEW ON employees TO john;
+-- TRIGGER -- Crea un disparador (trigger) que se ejecuta antes de una operación INSERT en una tabla.
+CREATE TRIGGER my_trigger BEFORE INSERT ON my_table FOR EACH ROW SET NEW.column1 = 'new_value';
+-- UPDATE -- Modifica filas de una tabla.
+UPDATE my_table SET column1 = 'new_value' WHERE column2 = 'condition_value';
+-- SHOW DATABASES -- Muestra todas las bases de datos.
+SHOW DATABASES;
+-- SHOW VIEW -- Muestra la declaración CREATE VIEW de una vista.
+SHOW CREATE VIEW my_view;
+-- PROCESS -- Muestra la lista de procesos del servidor.
+SHOW PROCESSLIST;
+-- RELOAD -- Recarga los privilegios.
+FLUSH PRIVILEGES;

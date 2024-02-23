@@ -1,0 +1,6 @@
+-- Active: 1706268174610@@127.0.0.1@3306
+SELECT `employeeNumber`, `firstName` FROM employees;
+SELECT * FROM employees;
+SELECT * FROM orders;
+SELECT USER();
+FLUSH PRIVILEGES;

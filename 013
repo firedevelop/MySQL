@@ -1,0 +1,12 @@
+SET @minimo =100;
+SELECT * FROM LIBROS WHERE cantidad > @minimo;
+
+SELECT Nombre, CASE EC 
+    WHEN 'C' THEN 'Casado/a'
+    WHEN 'S' THEN 'Soltero/a' 
+    WHEN 'D' THEN 'Divorciado/a'
+    ELSE 'Otros' 
+END 
+AS "Estado civil" FROM Empleados;
+
+

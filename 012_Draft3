@@ -1,0 +1,111 @@
+-- Active: 1706263855272@@127.0.0.1@3306@test
+SHOW TABLES FROM test;
+USE TEST;
+SELECT * FROM MYSQL.USER;
+SHOW GRANTS;
+SHOW GRANTS FOR 'JOHN'@'localhost';
+FLUSH PRIVILEGES;
+SELECT USER();
+SELECT * FROM MYSQL.USER;
+CREATE USER 'BB'@'LOCALHOST' IDENTIFIED BY 'BB';
+DROP USER 'BB'@LOCALHOST;
+CREATE USER 'CC'@'LOCALHOST';
+SELECT * FROM MYSQL.USER;
+GRANT SELECT, INSERT (employeeNumber, firstName) ON employees TO 'JOHN'@'localhost';
+GRANT SELECT (employeeNumber, firstName), INSERT (employeeNumber, firstName) ON employees TO '+'@'localhost';
+FLUSH PRIVILEGES;
+SHOW GRANTS;
+SELECT * FROM MYSQL.USER;
+SHOW GRANTS;
+SHOW GRANTS FOR 'JOHN'@'localhost';
+
+
+
+
+SHOW GRANTS FOR 'JOHN'@'localhost';
+FLUSH PRIVILEGES;
+
+SELECT user, host, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv, Drop_priv, Grant_priv
+FROM mysql.user;
+REVOKE ALL PRIVILEGES ON test.* FROM 'JOHN'@'localhost';
+GRANT SELECT (employeeNumber, firstName) ON test.employees TO 'JOHN'@'localhost';
+GRANT SELECT ON employees TO 'JOHN'@'localhost';
+GRANT SELECT ON test.employees TO 'JOHN'@'localhost';
+SHOW GRANTS FOR 'JOHN'@'localhost';
+REVOKE ALL PRIVILEGES ON test.* FROM 'JOHN'@'localhost';
+SHOW GRANTS FOR 'JOHN'@'localhost';
+GRANT SELECT ON test.employees TO 'JOHN'@'localhost';
+REVOKE ALL PRIVILEGES ON test.* FROM 'JOHN'@'localhost';
+SHOW GRANTS FOR 'JOHN'@'localhost';
+GRANT SELECT ON TEST.ORDERS TO 'JOHN'@'localhost';
+REVOKE ALL PRIVILEGES ON test.employees FROM 'JOHN'@'localhost';
+
+GRANT SELECT ON TEST.employees TO 'JOHN'@'localhost';
+GRANT SELECT ON TEST.ORDERS TO 'JOHN'@'localhost';
+
+REVOKE ALL PRIVILEGES ON TEST.employees FROM 'JOHN'@'localhost';
+REVOKE ALL PRIVILEGES ON TEST.orderS FROM 'JOHN'@'localhost';
+
+GRANT SELECT ON TEST.employees TO 'JOHN'@'localhost';
+GRANT SELECT ON TEST.orders TO 'JOHN'@'localhost';
+
+GRANT SELECT ON TEST.customers TO 'JOHN'@'localhost';
+
+SELECT USER();
+SELECT * FROM mysql.user;
+
+SHOW GRANTS FOR 'JOHN'@'localhost';
+
+REVOKE ALL PRIVILEGES ON TEST.employees FROM 'JOHN'@'localhost';
+
+SHOW GRANTS FOR 'JOHN'@'localhost';
+
+REVOKE ALL PRIVILEGES ON TEST.orders FROM 
+'JOHN'@'localhost';
+ GRANT SELECT, INSERT ON TEST.employees TO 'JOHN'@'localhost';
+UPDATE test.employees SET firstName='MERY' WHERE `employeeNumber`= 1002;
+commit;
+
+REVOKE ALL PRIVILEGES ON TEST.employees FROM 'JOHN'@'localhost';
+
+GRANT SELECT ON TEST.EMPLOYEES TO 'JOHN'@'localhost';
+GRANT INSERT ON TEST.employees TO 'JOHN'@'localhost';
+COMMIT;
+SHOW GRANTS FOR 'JOHN'@'localhost';
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR 'JOHN'@'localhost';
+COMMIT;
+GRANT UPDATE ON TEST.employees TO 'JOHN'@'localhost';
+ALTER USER 'JOHN'@'localhost'; WITH_MAX_UPDATE_PER_HOUR 2; 
+FLUSH PRIVILEGES;
+COMMIT;
+COMMIT;
+
+SHOW DATABASES;
+SELECT * FROM MYSQL.USER;
+SHOW GRANTS;
+SHOW GRANTS FOR 'JOHN'@'localhost'; 
+REVOKE ALL PRIVILEGES ON TEST.employees FROM 'JOHN'@'localhost';
+SHOW GRANTS FOR 'JOHN'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON TEST.employees TO 'JOHN'@'localhost';
+
+ALTER USER 'JOHN'@'localhost' WITH MAX_UPDATES_PER_HOUR 
+2;
+ALTER USER 'JOHN'@'localhost' WITH MAX_UPDATES_PER_HOUR 0;
+ALTER USER 'JOHN'@'localhost' WITH MAX_USER_CONNECTIONS 0;
+
+FLUSH PRIVILEGES;
+
+-- VIEWS
+CREATE VIEW MYVIEW AS SELECT EMPLOYEENUMBER, FIRSTNAME FROM EMPLOYEES;
+SELECT * FROM MYVIEW;
+GRANT SELECT ON test.MYVIEW TO 'JOHN'@'localhost';
+SHOW FULL TABLES;
+SHOW FULL TABLES LIKE 'MYVIEW';
+REVOKE SELECT ON TEST.MYVIEW FROM 'JOHN'@'localhost';
+DROP VIEW MYVIEW;
+-- END VIEWS
+
+SET ROLE 'JOHN'@'localhost';
+SELECT * FROM customers;
+

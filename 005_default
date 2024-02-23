@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    country VARCHAR(255) DEFAULT 'us',
+    lastLogin DATETIME DEFAULT CURRENT_TIMESTAMP()
+);
+
+ALTER TABLE users ALTER country SET DEFAULT 'uk';
+
+INSERT INTO users(name) VALUES ('jhon')
+
+ALTER TABLE users ALTER country DROP DEFAULT;
+INSERT INTO users(country) VALUES('es');

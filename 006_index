@@ -1,0 +1,6 @@
+CREATE INDEX myIndex ON users(name, country);
+
+ALTER TABLE users DROP INDEX myIndex;
+
+CREATE UNIQUE INDEX myIndexUnique ON users(name, country);
+

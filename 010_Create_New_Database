@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS CENTRO_FORMATIVO;
+USE CENTRO_FORMATIVO;
+
+CREATE TABLE alumnos(
+    dni VARCHAR(11),
+    nombre VARCHAR(20),
+    apellido VARCHAR(20),
+    password VARCHAR(20)
+);
+
+CREATE TABLE profesores(
+    dni VARCHAR(11),
+    nombre VARCHAR(20),
+    apellido VARCHAR(20),
+    password VARCHAR(20)
+);
+

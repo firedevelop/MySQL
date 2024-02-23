@@ -1,0 +1,6 @@
+SELECT * FROM employees;
+UPDATE employees SET firstName='John13' WHERE employeeNumber=1002;
+-- SELECT firstName FROM employees;
+SELECT firstName from employees;
+SELECT firstName from employees;
+

@@ -1,0 +1,21 @@
+drop table if exists users;
+DROP VIEW mySalaryReport;
+
+create table users(
+id int AUTO_INCREMENT PRIMARY KEY,
+country VARCHAR(255),
+salary int
+);
+
+INSERT INTO users(country, salary) VALUES ('us', '10000'), ('us', '12000'), ('ca', '9000');
+
+CREATE VIEW mySalaryReport AS
+SELECT country, salary
+FROM users
+WHERE salary > (SELECT AVG(salary) FROM users);
+
+SELECT * FROM mySalaryReport;
+
+CREATE OR REPLACE VIEW mySalaryReport AS SELECT country FROM users WHERE country='us';
+
+

@@ -1,0 +1,140 @@
+select distinct country from users;
+
+SELECT COUNT( DISTINCT country) from users;
+
+SELECT id from users where id !=1;   /* or <> */
+
+SELECT id from users WHERE id BETWEEN 1 and 5;
+
+select country from users where country like 'u%';
+
+select country from users where country in ('us','es');
+
+SELECT country, salary FROM users 
+WHERE (country = 'us' OR country = 'uk') AND salary BETWEEN 50 AND 100;
+
+select id, country from users order by country asc, id desc;
+
+
+select country from users where country is null;
+
+SELECT id, country FROM users WHERE country IS not NULL GROUP BY id;
+
+update users set salary = 80 where country = 'us';
+
+update users set name = 'Jhon Silver' where id = 1;
+
+delete from users where id = 10;
+
+select * from users limit 5;
+select * from users limit 3 OFFSET 5;   /* show 3 rows starting on row 6 */
+
+select min(id) as smallestId from users;
+select max(id) as highestId from users;
+
+select COUNT(salary) as count, SUM(salary), AVG(salary) as average from users;
+
+/**** LIKE OPERATOR *****/
+select name from users where name LIKE 'j%';
+select name from users where name LIKE '%s';
+select name from users where name LIKE '%j%';   /* j in any position */
+select name from users where name LIKE '_h%';   /* h in second position */
+select name from users where name LIKE 'j___%';  /* after j are at least 3 char, i.e. Joe is exclude but "Joe Smith" are include*/
+select name from users where name LIKE 'j%h';   /* Joe Smith */
+select name from users where name NOT LIKE 'j%';    /* Exclude start by j */
+select name from users where name LIKE 'j_%_%_%';   /* Joe is exclude, at least 4 characters */
+select name from users where name LIKE 'j_e';   /* output joe */
+
+/**** END LIKE ****/
+
+select country from users where country in ('us','uk');
+select country from users where country not in ('us','uk');
+select name, country from users where country in (select country from orders);
+
+select salary from users where salary NOT BETWEEN 1 AND 50;
+
+/* ALIAS */
+SELECT name AS nombres, country AS "paises amigos" from users;
+SELECT CONCAT_WS (address,' ' , postalZip) AS myFullAddressColumn from users;
+
+SELECT u.idUser, u.name, o.orderNumber 
+FROM users AS u, orders AS o 
+where u.country='us' AND u.idUser = o.idUser;
+
+/* END ALIAS */
+
+SELECT u.idUser, u.name, o.orderNumber
+FROM users AS u
+INNER JOIN orders AS o ON u.idUser = o.idUser;
+
+select u.idUser, u.name, o.orderNumber, s.name
+from ((users as u
+inner join orders as o on o.idUser = u.idUser)
+inner join shippers as s on s.idShippers = o.idShippers);
+
+select u.idUser,u.name, o.orderNumber
+from users as u
+left join orders as o on u.idUser = o.idUser
+order by u.name;
+
+select o.idUser, u.name, s.name ,o.orderNumber
+from ((orders as o
+right join shippers as s on o.idShippers = s.idShippers)
+right join users as u on u.idUser = o.idUser)
+order by u.name;
+
+select u.name, o.orderNumber
+from users as u
+cross join orders as o
+where u.idUser = o.idUser
+order by u.name;    /* same result as cross join if you use where */
+
+SELECT A.idUser, A.name AS name1, B.name AS name2, A.country
+FROM users A, users B
+WHERE A.idUser <> B.idUser
+AND A.country = B.country
+ORDER BY A.country;
+
+select idUser from users
+UNION
+select idUser from orders
+order by idUser;    /* UNION = no duplicates */
+
+select idUser from users
+UNION ALL
+select idUser from orders
+order by idUser;    /* UNION = allowed duplicates */
+
+select count(idUser), country from users group by country;
+
+select shippers.name, count(orders.orderNumber) from orders
+left join shippers on orders.idShippers = shippers.idShippers
+group by name;
+
+select users.name, count(orders.orderNumber) from orders
+left join users on orders.idUser = users.idUser
+group by name;
+
+SELECT COUNT(idUser), salary
+FROM users
+GROUP BY salary
+HAVING COUNT(idUser) > 1;
+
+
+select count(idUser),country
+from users group by country
+HAVING count(salary) >1
+order by count(salary); 
+
+SELECT COUNT(idUser), country, salary
+FROM users
+WHERE salary > 20
+GROUP BY country, salary;
+
+SELECT users.name, COUNT(orders.idUser)
+FROM (orders
+INNER JOIN users ON orders.idUser = users.idUser)
+GROUP BY name
+HAVING COUNT(orders.idUser) > 1;
+
+

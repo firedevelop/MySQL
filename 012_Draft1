@@ -1,0 +1,177 @@
+-- Active: 1706165359677@@127.0.0.1@3306@test
+SELECT * FROM employees LIMIT 100
+
+-- GRANT OPTION -- Concede a otros usuarios los permisos que tiene el primer usuario.
+GRANT SELECT ON employees TO john WITH GRANT OPTION;
+
+-- MAX_QUERIES_PER_HOUR -- Restringe el número de consultas por hora que puede realizar un usuario.
+GRANT USAGE ON *.* TO john WITH MAX_QUERIES_PER_HOUR 50;
+
+-- MAX_UPDATES_PER_HOUR -- Restringe el número de modificaciones por hora que puede realizar un usuario.
+GRANT UPDATE ON orders TO john WITH MAX_UPDATES_PER_HOUR 20;
+
+-- MAX_CONNECTIONS_PER_HOUR -- Restringe las conexiones por hora que realice un usuario.
+GRANT USAGE ON *.* TO john WITH MAX_CONNECTIONS_PER_HOUR 5;
+
+-- MAX_USER_CONNECTIONS -- Limita el número de conexiones simultáneas que puede tener un usuario.
+GRANT USAGE ON *.* TO john WITH MAX_USER_CONNECTIONS 3;
+
+-- ALL PRIVILEGES -- Da todos los permisos simples excepto GRANT OPTION.
+GRANT ALL PRIVILEGES ON employees TO john;
+
+-- ALTER -- Permite el uso de ALTER TABLE.
+GRANT ALTER ON employees TO john;
+
+-- ALTER ROUTINE -- Modifica o borra rutinas almacenadas.
+GRANT ALTER ROUTINE ON *.* TO john;
+
+-- CREATE -- Permite el uso de CREATE TABLE.
+GRANT CREATE ON *.* TO john;
+
+-- CREATE ROUTINE -- Crea rutinas almacenadas.
+GRANT CREATE ROUTINE ON employees TO john;
+
+-- CREATE TEMPORARY TABLES -- Permite el uso de CREATE TEMPORARY TABLE.
+GRANT CREATE TEMPORARY TABLES ON *.* TO john;
+
+-- CREATE USER -- Permite el uso de CREATE USER, DROP USER, RENAME USER y REVOKE.
+GRANT CREATE USER TO john;
+
+-- CREATE VIEW -- Permite el uso de CREATE VIEW.
+GRANT CREATE VIEW ON employees TO john;
+
+-- DELETE -- Permite el uso de DELETE.
+GRANT DELETE ON orders TO john;
+
+-- DROP -- Permite el uso de DROP TABLE.
+GRANT DROP ON *.* TO john;
+
+-- EXECUTE -- Permite al usuario ejecutar rutinas almacenadas.
+GRANT EXECUTE ON employees TO john;
+
+-- FILE -- Permite el uso de SELECT, INTO OUTFILE y LOAD DATA INFILE.
+GRANT FILE ON *.* TO john;
+
+-- INDEX -- Permite el uso de CREATE INDEX y DROP INDEX.
+GRANT INDEX ON orders TO john;
+
+-- INSERT -- Permite el uso de INSERT.
+GRANT INSERT ON customers TO john;
+
+-- LOCK TABLES -- Permite el uso de LOCK TABLES en tablas para las que tenga el permiso SELECT.
+GRANT LOCK TABLES ON employees TO john;
+
+-- PROCESS -- Permite el uso de SHOW FULL PROCESSLIST.
+GRANT PROCESS ON *.* TO john;
+
+-- RELOAD -- Permite el uso de FLUSH.
+GRANT RELOAD ON *.* TO john;
+
+-- REPLICATION CLIENT -- Permite al usuario preguntar dónde están los servidores maestros o esclavos.
+GRANT REPLICATION CLIENT TO john;
+
+-- REPLICATION SLAVE -- Necesario para los esclavos de replicación.
+GRANT REPLICATION SLAVE TO john;
+
+-- SELECT -- Permite el uso de SELECT.
+GRANT SELECT ON products TO john;
+
+-- SHOW DATABASES -- Muestra todas las BBDD.
+GRANT SHOW DATABASES TO john;
+
+-- SHOW VIEW -- Permite el uso de SHOW CREATE VIEW.
+GRANT SHOW VIEW ON employees TO john;
+
+-- SHUTDOWN -- Permite el uso de mysqladmin shutdown.
+GRANT SHUTDOWN TO john;
+
+-- UPDATE -- Permite el uso de UPDATE.
+GRANT UPDATE ON employees TO john;
+
+-- USAGE -- Sinónimo de no privileges, permite únicamente la conexión al gestor.
+GRANT USAGE ON *.* TO john;
+
+-- GRANT OPTION -- Posibilita dar permisos.
+GRANT SELECT ON employees TO john WITH GRANT OPTION;
+
+-- ALL [PRIVILEGES] -- Concede todos los privilegios a excepción de GRANT OPTION.
+GRANT ALL PRIVILEGES ON employees TO john;
+
+-- ALTER -- Permite el uso de ALTER TABLE.
+GRANT ALTER ON employees TO john;
+
+-- REFERENCES -- Permite al usuario la creación de claves ajenas.
+GRANT REFERENCES (column_name) ON employees TO john;
+
+-- PROXY -- Permite el uso de PROXY.
+GRANT PROXY ON ''@'' TO john WITH GRANT OPTION;
+
+-- Commands from the second post
+
+-- ALTER ROUTINE -- Modificar o borrar rutinas almacenadas.
+ALTER ROUTINE my_routine;
+
+-- CREATE -- Permite el uso de CREATE DATABASE.
+CREATE DATABASE my_database;
+
+-- CREATE ROLE -- Permite la creación de un ROL a nivel global.
+CREATE ROLE analyst;
+
+-- CREATE ROUTINE -- Crea una rutina almacenada.
+CREATE PROCEDURE my_procedure()
+BEGIN
+  -- Lógica de la rutina aquí
+END;
+
+-- CREATE USER -- Permite el uso de CREATE USER, DROP USER, RENAME USER y REVOKE ALL PRIVILEGES a nivel global.
+CREATE USER 'john_doe'@'localhost' IDENTIFIED BY 'password';
+
+-- CREATE VIEW -- Crea y modifica vistas.
+CREATE VIEW my_view AS SELECT column1, column2 FROM my_table;
+
+-- DELETE -- Elimina filas de una tabla.
+DELETE FROM my_table WHERE column1 = 'value';
+
+-- DROP -- Elimina una base de datos.
+DROP DATABASE my_database;
+
+-- EXECUTE -- Ejecuta una rutina almacenada.
+EXECUTE my_procedure();
+
+-- FILE -- Lee o escribe archivos del servidor.
+SELECT * INTO OUTFILE '/path/to/output/file.txt' FROM my_table;
+
+-- GRANT OPTION -- Concede el privilegio de conceder o quitar privilegios a otros usuarios.
+GRANT SELECT ON my_table TO john WITH GRANT OPTION;
+
+-- INSERT -- Inserta filas en una tabla.
+INSERT INTO my_table (column1, column2) VALUES ('value1', 'value2');
+
+-- LOCK TABLES -- Bloquea tablas para lectura.
+LOCK TABLES my_table READ;
+
+-- PROCESS -- Muestra la lista de procesos del servidor.
+SHOW PROCESSLIST;
+
+-- RELOAD -- Recarga los privilegios.
+FLUSH PRIVILEGES;
+
+-- REFERENCES -- Crea una clave ajena en una tabla hija.
+CREATE TABLE child_table (
+  FOREIGN KEY (parent_id) REFERENCES parent_table(id)
+);
+
+-- SELECT -- Recupera datos de una o más tablas.
+SELECT column1, column2 FROM my_table WHERE column1 = 'value';
+
+-- SHOW DATABASES -- Muestra todas las bases de datos.
+SHOW DATABASES;
+
+-- SHOW VIEW -- Muestra la declaración CREATE VIEW de una vista.
+SHOW CREATE VIEW my_view;
+
+-- TRIGGER -- Crea un disparador (trigger) que se ejecuta antes de una operación INSERT en una tabla.
+CREATE TRIGGER my_trigger BEFORE INSERT ON my_table FOR EACH ROW SET NEW.column1 = 'new_value';
+
+-- UPDATE -- Modifica filas de una tabla.
+UPDATE my_table SET column1 = 'new_value' WHERE column2 = 'condition_value';

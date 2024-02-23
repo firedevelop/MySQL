@@ -1,0 +1,22 @@
+create table z(
+	id int not null,
+    dni int,
+    name varchar(255),
+    code int,
+    ext int,
+    constraint myUnique1 unique(id, dni)
+);
+
+alter table z add unique (name);
+
+alter table z add constraint myUnique2 unique(code,ext);
+
+alter table z drop index name;
+
+alter table z drop index myUnique1, drop index myUnique2;
+
+/* see all CONSTRAINT*/
+SELECT *
+FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+WHERE TABLE_SCHEMA = 'test'
+  AND TABLE_NAME = 'z';

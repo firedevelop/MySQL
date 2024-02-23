@@ -1,0 +1,34 @@
+DROP TABLE IF EXISTS `data`;
+
+CREATE TABLE `data` (
+  `id` mediumint(8) unsigned NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  `phone` varchar(100) default NULL,
+  `email` varchar(255) default NULL,
+  `address` varchar(255) default NULL,
+  `text` TEXT default NULL,
+  `postalZip` varchar(10) default NULL,
+  `numberrange` mediumint default NULL,
+  `region` varchar(50) default NULL,
+  `country` varchar(100) default NULL,
+  `currency` varchar(100) default NULL,
+  `alphanumeric` varchar(255),
+  `list` varchar(255) default NULL,
+  PRIMARY KEY (`id`)
+) AUTO_INCREMENT=1;
+
+INSERT INTO `data` (`name`,`phone`,`email`,`address`,`text`,`postalZip`,`numberrange`,`region`,`country`,`currency`,`alphanumeric`,`list`)
+VALUES
+  ("Chelsea Waters","1-428-919-4507","porttitor.vulputate@protonmail.couk","P.O. Box 671, 1150 Dictum Road","vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae","27255",1,"Gyeonggi","Peru","$82.92","YRH94SHC4JE","15"),
+  ("Emmanuel Johnston","1-837-262-5175","dolor.tempus.non@yahoo.org","Ap #554-5856 Et Rd.","placerat, augue. Sed molestie. Sed id risus quis diam luctus","694766",4,"Nunavut","Norway","$16.66","SLH32VJP1OF","19"),
+  ("Daphne Reilly","(344) 463-8378","et@outlook.couk","495 Amet Av.","sem egestas blandit. Nam nulla magna, malesuada vel, convallis in,","627883",3,"Papua","Austria","$67.28","QMX87MEQ2AE","15"),
+  ("Zeph Travis","1-681-794-8730","sagittis.augue@icloud.edu","244-2008 Sed Rd.","Proin sed turpis nec mauris blandit mattis. Cras eget nisi","66388",1,"Noord Brabant","Costa Rica","$75.47","ODK82VLV7IO","17"),
+  ("Benjamin Mcintosh","(116) 488-5626","parturient.montes@hotmail.ca","Ap #439-2770 Diam Ave","vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac","468866",1,"Hidalgo","South Korea","$31.42","YOI84VWZ0FN","3");
+
+  INSERT INTO `data` (`name`,`phone`,`email`,`address`,`text`,`postalZip`,`numberrange`,`region`,`country`,`currency`,`alphanumeric`,`list`)
+VALUES
+  ("Daniel Dalton","(543) 637-3172","eu.nulla@outlook.net","270-457 Dapibus Rd.","dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc","850457",0,"South Chungcheong","Philippines","$6.72","MTK52BCQ7RD","17"),
+  ("Micah Dixon","(496) 749-0244","risus@hotmail.couk","283-6394 Dui Avenue","non enim. Mauris quis turpis vitae purus gravida sagittis. Duis","458255",6,"Konya","Philippines","$41.78","LCT35OPV2CP","9"),
+  ("Richard Stanley","1-627-538-4726","magna.sed@google.edu","769-257 Id Avenue","aliquet odio. Etiam ligula tortor, dictum eu, placerat eget, venenatis","733675",9,"Ancash","Belgium","$80.06","WNB13MIT4KW","17"),
+  ("Chaney Stone","(483) 425-6635","justo.faucibus@icloud.edu","P.O. Box 836, 5508 Nec Road","dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse","27687",5,"Santa Catarina","Costa Rica","$99.70","CUR31NEG5EB","7"),
+  ("Boris Ware","1-767-426-7623","ipsum.sodales.purus@google.org","Ap #912-317 Nulla. Road","eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris","5748",7,"Diyarbakır","Poland","$59.76","CGN86JBV2GP","7");

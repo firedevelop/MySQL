@@ -1,0 +1,20 @@
+create table z (
+	id int not null,
+    name varchar(255),
+    constraint myPrimaryKey1 primary key(id,name)
+);
+
+alter table z drop primary key;
+
+alter table z add primary key (name);
+
+alter table z drop primary key;
+
+alter table z add constraint myPrimaryKey1 primary key(id,name)
+
+
+
+
+
+
+
