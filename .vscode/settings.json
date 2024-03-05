@@ -1,0 +1,29 @@
+{
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+
+    // *** START Hide the popup of Extension MySQL from Weijan Chen    
+    //Remove parameter hint box
+    //"editor.parameterHints.enabled": false,
+    //Disable hover
+    "editor.hover.enabled": false,
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "root",
+            "database": "bookstore",
+            "username": "root",
+            "password": "mysql"
+        }
+    ],
+    //Controls if quick suggestions should show up while typing
+    //"editor.quickSuggestions.enabled": false,
+    // *** END Hide the popup of Extension MySQL from Weijan Chen
+
+}

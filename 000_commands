@@ -18,3 +18,5 @@ SELECT *
 FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
 WHERE TABLE_SCHEMA = 'test'
   AND TABLE_NAME = 'orders';
+
+  mysql < employees.sql
