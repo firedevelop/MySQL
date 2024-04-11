@@ -1,0 +1,8 @@
+
+    // SQL MACRO SNIPPED: 'aaa'. Execute query and control+enter shortcut to see the table quick
+{
+    "key": "ctrl+enter",
+    "command": "macros.run",
+    "args": { "command": "runSqlSelect" },
+    "when": "editorTextFocus && editorLangId == 'sql'"
+}

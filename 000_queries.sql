@@ -37,17 +37,18 @@ show create table users2;
 ALTER TABLE `users` MODIFY COLUMN `id` MEDIUMINT UNSIGNED NOT NULL;
 ALTER TABLE `users` DROP PRIMARY KEY;
 
-/* DROP PRIMARY KEY SIMPLE */
+/* ADD DROP PRIMARY KEY SIMPLE */
 ALTER TABLE users DROP PRIMARY KEY;
-
-/* ADD PRIMARY KEY */
 ALTER TABLE users ADD PRIMARY KEY(id);
 
-/* ADD COLUMN */
+/* ADD DROP COLUMN */
 alter table users add extension int;
+alter table users drop extension;
 
-/* ADD AUTOINCREMENT */
+/* ADD DROP AUTOINCREMENT */
 alter table users modify id int auto_increment;
+alter table users modify id int;
 /* or */
+ALTER TABLE z ADD COLUMN id2 INT UNSIGNED AUTO_INCREMENT PRIMARY KEY;
 ALTER TABLE `z` ADD COLUMN `new_id` INT UNSIGNED NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`new_id`);
 

@@ -1,4 +1,4 @@
--- Active: 1709107611742@@localhost@3306@hospital
+-- Active: 1709107611742@@localhost@3306@contacts
 DROP DATABASE if exists hospital ;
 CREATE DATABASE hospital;
 

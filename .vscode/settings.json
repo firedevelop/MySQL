@@ -26,4 +26,23 @@
     //"editor.quickSuggestions.enabled": false,
     // *** END Hide the popup of Extension MySQL from Weijan Chen
 
+    // SQL MACRO SNIPPED: 'aaa'. Execute query and control+enter shortcut to see the table quick
+    "macros": {
+        "runSqlSelect": [
+            "editor.action.insertSnippet",
+            {
+                "args": {
+                    "langId": "sql",
+                    "name": "aaa"  // Nombre del snippet 'aaa'
+                },
+                "command": "editor.action.insertSnippet"
+            },
+            "editor.action.runLine"
+        ]
+    }
+    
+    
+    }
+    
+
 }

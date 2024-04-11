@@ -1,0 +1,5 @@
+CASCADE;
+SET SQL_SAFE_UPDATES=0;
+CONSTRAINT
+FOREIGN KEY
+ALTER TABLE asignaturas add precio decimal(5,2);

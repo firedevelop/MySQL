@@ -1,3 +1,4 @@
+-- Active: 1709107611742@@localhost@3306@contacts
 drop table if exists users;
 DROP VIEW mySalaryReport;
 
