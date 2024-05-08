@@ -1,7 +1,7 @@
 /* ----- 1) Creación Base de datos */
-DROP DATABASE tienda_ilerna;
-CREATE DATABASE tienda_ilerna;
-USE tienda_ilerna;
+DROP DATABASE tienda;
+CREATE DATABASE tienda;
+USE tienda;
 
 /* ----- 2) Creación de tablas */
 
@@ -29,8 +29,10 @@ CREATE TABLE portatil (
     modelo VARCHAR(30) NOT NULL,
     ram INT NOT NULL,
     precio DECIMAL(8,2),
-    descuento DECIMAL(8,2) CHECK (descuento <= 50), -- Comprueba que el descuento siempre es menor o igual a 50
-    precio_final DECIMAL(8,2) AS (ROUND(precio - (precio * descuento / 100),2))
+    descuento DECIMAL(8,2) 
+        CHECK (descuento <= 50), -- Comprueba que el descuento siempre es menor o igual a 50
+    precio_final DECIMAL(8,2) 
+        AS (ROUND(precio - (precio * descuento / 100),2))
 );
 
 
@@ -39,7 +41,8 @@ CREATE TABLE compra (
     num_serie INT PRIMARY KEY,
     dni VARCHAR(9) NOT NULL,
     fecha_compra VARCHAR(9), -- Tenemos la fecha como un VARCHAR
-    fin_garantia DATE AS (DATE_ADD(fecha_compra, INTERVAL 4 YEAR)),
+    fin_garantia DATE 
+        AS (DATE_ADD(fecha_compra, INTERVAL 4 YEAR)),
     CONSTRAINT num_serie_fk FOREIGN KEY (num_serie) -- Clave ajena que se conecta con portatil
         REFERENCES portatil (num_serie)
         ON DELETE CASCADE ON UPDATE CASCADE, -- Si actualizamos o modficicamos el campo raiz afecta a la tabla
@@ -131,7 +134,7 @@ WHERE
     email LIKE '%gmail.com'
 ORDER BY nombre ASC;
 
--- 6.2) Lista de portatil de 16 GB de RAM ordenados de más barato a más caro*/
+-- 6.2) Lista de portatil de 16 GB de RAM ordenados de más barato a más caro
 SELECT 
     *
 FROM

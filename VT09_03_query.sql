@@ -1,4 +1,4 @@
--- Active: 1709107611742@@localhost@3306@contacts
+-- Active: 1709107611742@@localhost@3306@cuentas_banco
 CREATE TABLE producto3 (
 
   codigo INT PRIMARY KEY,

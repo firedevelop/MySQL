@@ -1,3 +1,4 @@
+-- Active: 1709107611742@@localhost@3306@contacts
 CREATE DATABASE personas_aficiones;
 
 USE personas_aficiones;
@@ -100,18 +101,25 @@ FROM personasaficiones AS PA
 INNER JOIN personas AS P ON PA.PersonaID = P.PersonaID
 INNER JOIN aficiones AS A ON PA.AficionID = A.AficionID;
 
+select personas.Nombre, aficiones.AficionNombre 
+from personas
+inner join personasaficiones
+on personas.personaid = personasaficiones.PersonaID
+inner join aficiones
+on personasaficiones.aficionid = aficiones.AficionID;
 
 /*Cuenta cuántas aficiones tiene cada persona.*/
 SELECT personas.nombre, COUNT(personasaficiones.AficionID) AS 'Numero_aficiones'
 FROM personasaficiones 
-INNER JOIN personas ON  personasaficiones.PersonaID =  personas.PersonaID
+INNER JOIN personas ON personasaficiones.PersonaID =  personas.PersonaID
 GROUP BY personas.PersonaID
 ORDER BY personas.nombre DESC;
+
 
 /*Encuentra nombre de las personas que tienen más de una afición.*/
 SELECT personas.nombre
 FROM personasaficiones 
-INNER JOIN personas ON  personasaficiones.PersonaID =  personas.PersonaID
+INNER JOIN personas ON personasaficiones.PersonaID =  personas.PersonaID
 GROUP BY personas.PersonaID
 HAVING COUNT(personasaficiones.AficionID) > 1
 ORDER BY personas.nombre DESC;
@@ -127,7 +135,7 @@ INNER JOIN personas AS P ON PA.PersonaID = P.PersonaID
 INNER JOIN aficiones AS A ON PA.AficionID = A.AficionID
 WHERE P.nombre = 'Carlos';
 
-/*Encuentra la afición más popular y cuántas personas la practican.*/
+/*Encuentra la afición más popular y cuántas personas la practica */
 SELECT A.AficionNombre, COUNT(PA.aficionID) AS 'Practicantes'
 FROM aficiones A
 INNER JOIN personasaficiones PA ON A.AficionID = PA.aficionID
@@ -135,11 +143,9 @@ GROUP BY PA.aficionID
 ORDER BY Practicantes DESC
 LIMIT 1;
 
-/*
-Encontrar el número de personas por cada nombre único:
+/* Encontrar el número de personas por cada nombre único:
 las personas por nombre y contamos cuántas personas tienen cada nombre único. 
-Esto te dará un recuento de cuántas personas comparten cada nombre en la base de datos.
-*/
+Esto te dará un recuento de cuántas personas comparten cada nombre en la base de datos.*/ 
 SELECT Nombre, COUNT(*) AS CantidadDePersonas
 FROM Personas
 GROUP BY Nombre;

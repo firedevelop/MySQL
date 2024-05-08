@@ -1,4 +1,4 @@
--- Active: 1709107611742@@localhost@3306@contacts
+-- Active: 1709107611742@@localhost@3306@transacciones_cuentas
 /*
 Escenario y Objetivo del Ejercicio
 Tenemos una base de datos de un banco con una tabla llamada cuentas que contiene información sobre el saldo de los clientes.

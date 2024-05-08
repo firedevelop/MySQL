@@ -1,3 +1,4 @@
+-- Active: 1709107611742@@localhost@3306@cuentas_banco
 DROP DATABASE empresa;
 -- Crear la base de datos de empleados y departamentos
 CREATE DATABASE IF NOT EXISTS Empresa;
@@ -156,6 +157,7 @@ WHERE nombre LIKE 'L%';
 /*
 Obtener el nombre del departamento y la cantidad de empleados que tienen un salario bajo 
 Usamos la vista EmpleadosSalarioBajo y contiene los id de los empleados y los id de sus departamentos correspondientes.
+
 */
 SELECT d.nombre AS Departamento, COUNT(*) AS EmpleadosSalarioBajo
 FROM empleados e

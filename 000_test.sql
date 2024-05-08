@@ -1,6 +1,4 @@
--- Active: 1709107611742@@localhost@3306@contacts
-ALTER TABLE a
-ADD COLUMN id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY;
+-- Active: 1709107611742@@localhost@3306@tienda
+select nombre from cliente as c
 
-SELECT * FROM a;
-
+;

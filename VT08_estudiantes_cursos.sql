@@ -1,3 +1,4 @@
+-- Active: 1709107611742@@localhost@3306@personas_aficiones
 DROP DATABASE estudiantes_cursos;
 CREATE DATABASE estudiantes_cursos;
 
@@ -210,10 +211,18 @@ WHERE id_curso = (
     )
 );
 
+SELECT c.nombre_curso
+FROM cursos AS c
+INNER JOIN inscripciones AS i ON c.id_curso = i.id_curso
+GROUP BY c.nombre_curso
+ORDER BY AVG(i.calificacion) DESC
+LIMIT 1;
+
+
 -- Uando Limite 1 ordenando de forma descendencete
 SELECT nombre_curso
 FROM Cursos
-WHERE id_curso = (
+WHERE id_curso = (  
     SELECT id_curso
     FROM Inscripciones
     GROUP BY id_curso
