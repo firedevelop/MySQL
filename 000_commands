@@ -1,8 +1,9 @@
+-- Active: 1709107611742@@localhost@3306@employees
 /* see foreign key relation */
 SELECT 
     TABLE_NAME,
     COLUMN_NAME,
-    CONSTRAINT_NAME,
+    CONSTRAINT_NAME,    
     REFERENCED_TABLE_NAME,
     REFERENCED_COLUMN_NAME
 FROM
