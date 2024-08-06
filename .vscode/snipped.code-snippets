@@ -15,10 +15,66 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"SQL Select All From Table": {
-		"prefix": "aa",
+	"a1": {
+		"prefix": "a1",
 		"body": [
-			"SELECT * FROM a;"
+			"a1@localhost;"
+		],
+		"description": "Select all columns from a table"
+	},
+	"a2": {
+		"prefix": "a2",
+		"body": [
+			"a2@localhost;"
+		],
+		"description": "Select all columns from a table"
+	},
+	"a3": {
+		"prefix": "a3",
+		"body": [
+			"a3@localhost;"
+		],
+		"description": "Select all columns from a table"
+	},
+	"a4": {
+		"prefix": "a4",
+		"body": [
+			"a4@localhost;"
+		],
+		"description": "Select all columns from a table"
+	},
+	"a5": {
+		"prefix": "a5",
+		"body": [
+			"a5@localhost;"
+		],
+		"description": "Select all columns from a table"
+	},
+	"a6": {
+		"prefix": "a6",
+		"body": [
+			"a6@localhost;"
+		],
+		"description": "Select all columns from a table"
+	},
+	"a7": {
+		"prefix": "a7",
+		"body": [
+			"a7@localhost;"
+		],
+		"description": "Select all columns from a table"
+	},
+	"a8": {
+		"prefix": "a8",
+		"body": [
+			"a8@localhost;"
+		],
+		"description": "Select all columns from a table"
+	},
+	"a9": {
+		"prefix": "a9",
+		"body": [
+			"a9@localhost;"
 		],
 		"description": "Select all columns from a table"
 	}

@@ -8,8 +8,8 @@ SELECT * FROM mysql.user
 ALTER USER 'AA'@'localhost' IDENTIFIED BY 'AA2';
 
 -- Alter Password Expired
-ALTER USER 'AA'@'localhost' IDENTIFIED WITH sha256_pas
-sword BY 'AA2' PASSWORD EXPIRED INTERVAL 200 DAY;
+alter user a1@localhost IDENTIFIED by 'a1' 
+PASSWORD expire INTERVAL 200 day;
 
 -- DROP USER
 DROP USER 'AA'@'localhost';

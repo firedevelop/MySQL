@@ -1,15 +1,29 @@
--- Active: 1706263855272@@127.0.0.1@3306@test
+-- Active: 1722498295978@@127.0.0.1@3306@test
 SHOW TABLES FROM test;  -- Show tables
 USE TEST;   -- use db test
 SELECT * FROM mysql.user;   -- Show users
 SHOW GRANTS;   -- Show Grants
 SHOW GRANTS FOR 'JOHN'@'localhost';
+
 FLUSH PRIVILEGES;
 SELECT USER();  -- Who I am
 CREATE USER 'AA'@'localhost' IDENTIFIED BY 'AA';
 DROP USER 'JOHN'@'localhost';
 SELECT * FROM employees ORDER BY `employeeNumber` ASC LIMIT 5;
 SELECT `employeeNumber`, `firstName` FROM employees;    -- AA console
+
+-- FULL QUERY TO REVOKE AND GRANT TO ALL DATABASES
+REVOKE ALL PRIVILEGES ON *.* FROM 'a1'@'localhost'; 
+REVOKE GRANT OPTION ON *.* FROM 'a1'@'localhost';
+-- un máximo de 9 conexiones por hora.
+-- máximo de 9 conexiones simultáneas.  
+GRANT SELECT, INSERT ON *.* TO 'a1'@'localhost' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0; 
+select * from mysql.user;
+-- END
+
+
+
+
 GRANT SELECT, INSERT ON employees TO 'JOHN'@'localhost';
 REVOKE ALL PRIVILEGES ON test.employees FROM 'JOHN'@'localhost';
 REVOKE ALL PRIVILEGES ON test.orders FROM 'JOHN'@'localhost';

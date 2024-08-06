@@ -17,9 +17,9 @@
             "port": 3306,
             "driver": "MySQL",
             "name": "root",
-            "database": "bookstore",
+            "database": "sakila",
             "username": "root",
-            "password": "mysql"
+            "password": ""
         }
     ],
     //Controls if quick suggestions should show up while typing
@@ -45,4 +45,3 @@
     }
     
 
-}

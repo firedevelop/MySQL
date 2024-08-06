@@ -1,9 +1,10 @@
--- Active: 1709107611742@@localhost@3306@hospital
+-- Active: 1722498295978@@127.0.0.1@3306@employees
 /*
    Si no tienes una base de datos, copia las siguientes dos líneas que no están comentadas
 */
 CREATE DATABASE IF NOT EXISTS contacts;
 USE contacts;
+select * from tblUsuarios;
 
 /*
    Si ya tienes una base de datos, sólo copia lo siguiente
